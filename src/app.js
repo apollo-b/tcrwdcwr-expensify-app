@@ -22,9 +22,9 @@ const water = store.dispatch(addExpense({description: 'Water bill', amount: 1200
 const gas = store.dispatch(addExpense({description: 'Gas bill', amount: 3000, createdAt: 1000}));
 store.dispatch(addExpense({description: 'Rent', amount: 73000}));
 
-setTimeout(() => {
-    store.dispatch(setTextFilter('gas'));
-}, 3000)
+// setTimeout(() => {
+//     store.dispatch(setTextFilter('gas'));
+// }, 3000)
 
 console.log(store.getState());
 
