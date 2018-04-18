@@ -10,6 +10,8 @@ export default class ExpenseForm extends React.Component {
     constructor(props) {
         super(props);
 
+        // this.state.errorState is different from React course app
+        // typeof(errorState)=boolean; typeof(error)=String; 'error' not use
         this.state = {
             description: props.expense ? props.expense.description : '',
             note: props.expense ? props.expense.note : '',
