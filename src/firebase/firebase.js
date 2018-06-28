@@ -23,7 +23,9 @@ const config = {
             country: 'United States'
         }
     }
-);
+).then((data)=>{
+    console.log('after the database');
+});
 
 // database.ref().set("This is my data");
 
