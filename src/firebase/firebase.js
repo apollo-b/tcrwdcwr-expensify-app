@@ -23,16 +23,22 @@ const config = {
             country: 'United States'
         }
     }
-).then((data)=>{
-    console.log('after the database');
+).then(()=>{
+    console.log('Data is saved.');
+}).catch((e)=>{
+    console.log('This failed.', e)
 });
 
 // database.ref().set("This is my data");
 
-database.ref('age').set(27);
-database.ref('location/city').set('Nyuu Yooku');
+// database.ref('age').set(27);
+// database.ref('location/city').set('Nyuu Yooku');
 
 database.ref('attributes').set({
     height: 66,
     weight: 185
+}).then(() => {
+    console.log('Updated database 1.');
+}).catch((e) => {
+    console.log("Failed to update database.\n", e);
 });
