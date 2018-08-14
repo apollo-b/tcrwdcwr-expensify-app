@@ -13,35 +13,25 @@ const config = {
 
   const database = firebase.database();
 
-  // Setup 'expenses' with three items (desc, note, amount, createdAt)
-  // Set up with 3 push calls
-  const expenses = [{
-      desc: "item 1",
-      note: "note 1",
-      amount: 11,
-      createdAt: 111,
-  }, {
-    desc: "item 2",
-    note: "note 2",
-    amount: 22,
-    createdAt: 222
-}, {
-    desc: "item 3",
-    note: "note 3",
-    amount: 33,
-    createdAt: 333
-}];
-database.ref('notes').set(null);
-database.ref('notes').push(expenses[0]);
-database.ref('notes').push(expenses[1]);
-database.ref('notes').push(expenses[2]);
+  // child_removed
+  database.ref('notes').on('child_removed', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+  });
+  database.ref('notes').on('child_changed', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+  });
+  database.ref('notes').on('child_added', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+  });
+// database.ref('notes').on('value', (snapshot) => {
+//     const expenses = [];
+    
+//     snapshot.forEach((childSnapshot) => {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         });
+//     });
 
-
-//   database.ref('notes').push({
-//       title: 'Course Topics',
-//       body: 'React Native, Angular, Python'
-//   });
-
-//   database.ref('notes/-LHiYnEkfNMLuqSgdo1V').update({
-//       body: 'Whatttt'
-//   });
+//     console.log(expenses);
+// });
